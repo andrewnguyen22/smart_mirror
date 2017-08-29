@@ -351,10 +351,18 @@
             android:layout_weight="1"></LinearLayout>
 
         <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/headlines"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"></LinearLayout>
+        <!--TODO quote of the day -->
+        <!--TODO news -->
+        <!--TODO Andrew and Kelsey calendar -->
+        <!--TODO facts about today -->
+        <!--TODO How long till work -->
+        <!--TODO Shopping List -->
+
     </LinearLayout>
 
     <LinearLayout
