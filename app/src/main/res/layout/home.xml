@@ -69,6 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="6dp"
+            android:layout_marginTop="3dp"
             android:layout_weight="1"
             android:background="#1Affffff"
             android:orientation="horizontal">
@@ -92,8 +93,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
                     android:layout_marginLeft="18dp"
+                    android:layout_weight="1"
                     android:textColor="@android:color/white">
 
                     <TextView
@@ -131,21 +132,21 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
                 android:layout_marginLeft="18dp"
+                android:layout_weight="1.5"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/weather_location"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="6dp"
                     android:layout_weight="1"
-                    android:textColor="@android:color/white"
-                    android:textSize="8sp"
-                    android:gravity="center_vertical"
                     android:fontFamily="sans-serif-smallcaps"
+                    android:gravity="center_vertical"
                     android:text="Tampa, Florida"
-                    android:id="@+id/weather_location"/>
+                    android:textColor="@android:color/white"
+                    android:textSize="8sp" />
 
                 <TextView
                     android:id="@+id/todays_temperature"
@@ -158,14 +159,13 @@
                     android:textSize="40dp" />
 
                 <TextView
-                    android:id="@+id/test"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-thin"
-                    android:textSize="8sp"
+                    android:text="The sun will set at 7:45PM"
                     android:textColor="@android:color/white"
-                    android:text="The sun will set at 7:45PM"/>
+                    android:textSize="8sp" />
 
             </LinearLayout>
 
@@ -374,14 +374,111 @@
 
 
         </LinearLayout>
-
+        <!-- Headlines -->
         <LinearLayout
+            android:id="@+id/headlines"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
             android:layout_weight="1"
-            android:background="#1Affffff"></LinearLayout>
+            android:background="#1Affffff"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="9dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bottom_border"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/headlines_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-3dp"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:text="Today's Headlines"
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="4"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp">
+
+                <TextView
+                    android:id="@+id/headline_1_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="2dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="Trump appointee says it was hackers who called Obama's mom a 'w@!re'"
+                    android:textColor="@android:color/white"
+                    android:textSize="6dp" />
+
+                <TextView
+                    android:id="@+id/headline_2_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/headline_1_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="2dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="Trump fumes at staff over Phoenix rally crowd size images"
+                    android:textColor="@android:color/white"
+                    android:textSize="6dp" />
+
+                <TextView
+                    android:id="@+id/headline_3_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/headline_2_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="2dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="Manafort's spokesman and his former attorney subpoenaed"
+                    android:textColor="@android:color/white"
+                    android:textSize="6dp" />
+
+                <TextView
+                    android:id="@+id/headline_4_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/headline_3_tv"
+                    android:layout_centerHorizontal="true"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="7-year-old girl kidnapped and thrown from bridge -- swims to shore"
+                    android:textColor="@android:color/white"
+                    android:textSize="6dp" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
 
 
         <LinearLayout
@@ -429,33 +526,454 @@
         </LinearLayout>
 
     </LinearLayout>
-    <!-- Todays Weather Icon-->
+    <!-- Body-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="-3dp"
-        android:layout_weight="2">
+        android:layout_marginTop="16dp"
+        android:layout_weight="7"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/headlines"
+            android:id="@+id/left_sidebar_linear_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"></LinearLayout>
-        <!--TODO quote of the day -->
-        <!--TODO news -->
-        <!--TODO Andrew and Kelsey calendar -->
-        <!--TODO facts about today -->
-        <!--TODO How long till work -->
-        <!--TODO Shopping List -->
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1"
+                android:background="@android:color/holo_blue_bright" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bottom_border">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:gravity="center"
+                        android:text="Kelsey's Day"
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:background="#1Affffff">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginTop="3dp">
+
+                        <TextView
+                            android:id="@+id/kelseys_1_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Doctor's Appointment at 9:00am"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_2_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_1_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Class at 10:45am"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_3_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_2_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Tucker's grooming appointment at 12:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_4_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_3_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Nails 1:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_5_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_4_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Study Group 2:30pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_6_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_5_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Class 3:30pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_7_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_6_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Assignment 1 Due 5:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_8_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_7_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="LDC meeting 8:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/kelseys_9_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/kelseys_8_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Birthday party 10:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight=".1"
+                android:background="@android:color/holo_blue_bright" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bottom_border">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:gravity="center"
+                        android:text="Andrew's Day"
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:background="#1Affffff">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginTop="3dp">
+
+                        <TextView
+                            android:id="@+id/andrews_1_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Doctor's Appointment at 9:00am"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_2_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_1_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Class at 10:45am"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_3_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_2_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Tucker's grooming appointment at 12:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_4_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_3_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Nails 1:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_5_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_4_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Study Group 2:30pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_6_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_5_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Class 3:30pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_7_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_6_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Assignment 1 Due 5:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_8_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_7_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="LDC meeting 8:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/andrews_9_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/andrews_8_task"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Birthday party 10:00pm"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight=".1"
+                android:background="@android:color/holo_blue_bright" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.85"
+                android:background="#1Affffff"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bottom_border"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:gravity="center"
+                        android:text="Trending Topics"
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="4">
+
+                    <TextView
+                        android:id="@+id/tweet_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginBottom="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lines="2"
+                        android:text="This is where a tweet goes"
+                        android:textColor="@android:color/white"
+                        android:textSize="6dp" />
+
+                    <TextView
+                        android:id="@+id/tweet_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tweet_1"
+                        android:layout_marginBottom="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lines="2"
+                        android:text="This is where a tweet goes"
+                        android:textColor="@android:color/white"
+                        android:textSize="6dp" />
+
+                    <TextView
+                        android:id="@+id/tweet_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tweet_2"
+                        android:layout_marginBottom="2dp"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lines="2"
+                        android:text="This is where a tweet goes"
+                        android:textColor="@android:color/white"
+                        android:textSize="6dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <!--Center of Body-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/right_sidebar_linear_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/holo_green_dark"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
