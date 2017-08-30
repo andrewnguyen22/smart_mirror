@@ -955,21 +955,599 @@
 
         </LinearLayout>
         <!--Center of Body-->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/quote_of_the_day_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:ellipsize="end"
+                    android:layout_alignParentBottom="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:textSize="24dp"
+                    android:gravity="center"
+                    android:text="to see things in the seed - that is the genius"
+                    android:textColor="@android:color/white" />
+                <!-- TODO Make all lowercase-->
+            </RelativeLayout>
+
+
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/right_sidebar_linear_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/holo_green_dark"
             android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1"
+                android:background="@android:color/holo_blue_bright" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".75"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bottom_border">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:gravity="center"
+                        android:text="Driving Today"
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:background="#1Affffff">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginTop="3dp">
+
+                        <TextView
+                            android:id="@+id/driving_to_location_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="It takes 45 minutes to get to SOFWERX"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+                        <TextView
+                            android:id="@+id/driving_to_location_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/driving_to_location_1"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="It takes 15 minutes to get to John Knox"
+                            android:textColor="@android:color/white"
+                            android:textSize="8dp" />
+
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight=".1"
+                android:background="@android:color/holo_blue_bright" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".75"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bottom_border">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:gravity="center"
+                        android:text="Today in history"
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:background="#1Affffff">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginTop="3dp">
+
+                        <TextView
+                            android:id="@+id/today_in_history"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="3"
+                            android:text="Rains from Hurricane Katrina cause a levee breech at the Industrial Canal in New Orleans, causing severe flooding."
+                            android:textColor="@android:color/white"
+                            android:textSize="6sp" />
+
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1.5"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/test"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="4"
+                    android:background="#000"
+                    android:src="@drawable/arrow_right">
+
+                </ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight=".1"
+                android:background="@android:color/holo_blue_bright" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bottom_border">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:gravity="center"
+                        android:text="Grocery List"
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:background="#1Affffff">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/right_border">
+
+                            <TextView
+                                android:id="@+id/shopping_item_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginTop="6dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Chicken"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_1"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Peanut Butter"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_2"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Tomatoes"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_3"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Apples"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_4"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Muscle Milks"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_5"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Pizza Sauce"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_6"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Pizza Crusts"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_7"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Turkey Chili"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_8"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Bananas"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_9"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Tomatoes"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_10"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Chocolate Chips"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_11"
+                                android:layout_marginBottom="6dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Paper Plates"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/shopping_item_13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginTop="6dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Chicken"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_14"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_13"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Peanut Butter"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_14"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Tomatoes"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_15"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Apples"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_17"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_16"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Muscle Milks"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_18"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_17"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Pizza Sauce"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_18"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Pizza Crusts"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_19"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Turkey Chili"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_20"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Bananas"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_21"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Tomatoes"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_23"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_22"
+                                android:layout_marginBottom="2dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Chocolate Chips"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                            <TextView
+                                android:id="@+id/shopping_item_24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@id/shopping_item_23"
+                                android:layout_marginBottom="6dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif-condensed"
+                                android:lines="1"
+                                android:text="Paper Plates"
+                                android:textColor="@android:color/white"
+                                android:textSize="8dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
 
 
         </LinearLayout>
