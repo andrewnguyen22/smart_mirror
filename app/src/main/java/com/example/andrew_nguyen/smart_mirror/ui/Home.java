@@ -1,82 +1,81 @@
-package com.example.andrew_nguyen.smart_mirror;
+package com.example.andrew_nguyen.smart_mirror.ui;
 
+import android.content.Context;
+import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.provider.CalendarContract;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.andrew_nguyen.smart_mirror.R;
+import com.example.andrew_nguyen.smart_mirror.driving_distance.Distance_Dialog;
+import com.example.andrew_nguyen.smart_mirror.driving_distance.Distance_Parser;
+import com.example.andrew_nguyen.smart_mirror.forecast_weather.Forecast_Day;
+import com.example.andrew_nguyen.smart_mirror.forecast_weather.Forecast_Weather_Parser;
+import com.example.andrew_nguyen.smart_mirror.headlines.Headlines_Call;
+import com.example.andrew_nguyen.smart_mirror.headlines.Headlines_Parser;
+import com.example.andrew_nguyen.smart_mirror.today_in_history.Event;
+import com.example.andrew_nguyen.smart_mirror.today_in_history.Today_In_History_Call;
+import com.example.andrew_nguyen.smart_mirror.today_in_history.Today_In_History_Parser;
+import com.example.andrew_nguyen.smart_mirror.todays_weather.Todays_Weather_Parser;
+import com.example.andrew_nguyen.smart_mirror.tools.Tools;
 
-public class home extends AppCompatActivity {
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Home extends AppCompatActivity implements LocationListener {
+    final String TAG = "Home";
 
     //Today's Weather
-    ImageView todays_weather_iv;
-    TextView todays_precepitation_tv,
+    public static ImageView todays_weather_iv;
+    public static TextView todays_weather_descript_tv,
             todays_humidity_tv,
             todays_high_low_tv,
             todays_location_tv,
             todays_temperature_tv,
             todays_sunset_sunrise_tv;
-    String todays_precepitation,
-            todays_humidity,
-            todays_high_low,
-            todays_location,
-            todays_temperature,
-            todays_sunset_sunrise;
 
     //5 Day Forecast
-    ImageView day_1_iv,
+    public static ImageView day_1_iv,
             day_2_iv,
             day_3_iv,
             day_4_iv,
             day_5_iv;
-    TextView day_1_day_tv,
+    public static TextView day_1_day_tv,
             day_2_day_tv,
             day_3_day_tv,
             day_4_day_tv,
             day_5_day_tv,
+
             day_1_temp_tv,
             day_2_temp_tv,
             day_3_temp_tv,
             day_4_temp_tv,
             day_5_temp_tv;
-    String day_1_day,
-            day_2_day,
-            day_3_day,
-            day_4_day,
-            day_5_day,
-            day_1_temp,
-            day_2_temp,
-            day_3_temp,
-            day_4_temp,
-            day_5_temp;
 
     //Headlines
-    TextView headline_1_tv,
+    public static TextView headline_1_tv,
             headline_2_tv,
             headline_3_tv,
             headline_4_tv;
-    String headline_1,
-            headline_2,
-            headline_3,
-            headline_4;
 
     //Date and Time
-    TextView date_tv,
-            time_tv;
-    String date,
-            time;
+    public static TextView time_tv;
 
     //driving
-    TextView driving_1_tv,
+    public static TextView driving_1_tv,
             driving_2_tv;
-    String driving_1,
-            driving_2;
+    public static String des1="SOFWERX", des2 = "St Josephs John Knox";
 
     //today in history
-    TextView today_in_history_tv;
-    String today_in_history;
+    public static TextView today_in_history_tv;
 
     //Lightswitch & Button
     ImageView lightswitch_iv,
@@ -183,6 +182,12 @@ public class home extends AppCompatActivity {
             k_event8,
             k_event9;
 
+    //Latitude and Longitude
+    public static double latitude, longitude;
+    public static String cityname, statename;
+    //Context
+    Context ctx;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,9 +195,10 @@ public class home extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//Remove the status bar
         setContentView(R.layout.home);
         //Start Variable Declaration *
+        ctx = this;
         //Today
         todays_weather_iv = (ImageView) findViewById(R.id.todays_weather_icon);
-        todays_precepitation_tv = (TextView) findViewById(R.id.precipitation);
+        todays_weather_descript_tv = (TextView) findViewById(R.id.weather_description);
         todays_humidity_tv = (TextView) findViewById(R.id.humidity);
         todays_high_low_tv = (TextView) findViewById(R.id.high_low_temp);
         todays_location_tv = (TextView) findViewById(R.id.weather_location);
@@ -220,7 +226,6 @@ public class home extends AppCompatActivity {
         headline_3_tv = (TextView) findViewById(R.id.headline_3_tv);
         headline_4_tv = (TextView) findViewById(R.id.headline_4_tv);
         //Date_Time
-        date_tv = (TextView) findViewById(R.id.date_tv);
         time_tv = (TextView) findViewById(R.id.time_tv);
         //driving today
         driving_1_tv = (TextView) findViewById(R.id.driving_to_location_1);
@@ -282,7 +287,57 @@ public class home extends AppCompatActivity {
         k_event8_tv = (TextView) findViewById(R.id.kelseys_8_task);
         k_event9_tv = (TextView) findViewById(R.id.kelseys_9_task);
         //End Variable Declaration *
+        Timer timer = new Timer ();
+        timer.schedule(new Update_UI(), 1000,300000);
 
-        
+
+    }
+    @Override
+    public void onLocationChanged(Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+
+        new Todays_Weather_Parser(latitude, longitude, ctx).execute();//Todays
+        new Forecast_Weather_Parser(latitude, longitude, ctx).execute();//forecast
+        new Headlines_Parser().execute();//Headlines
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivity(intent);
+        Toast.makeText(getBaseContext(), "Gps is turned off!! ",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(getBaseContext(), "Gps is turned on!! ",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+    }
+
+    private class Update_UI extends TimerTask{
+
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Tools.get_lat_long(ctx);
+                    new Todays_Weather_Parser(latitude, longitude, ctx).execute();
+                    new Forecast_Weather_Parser(latitude, longitude, ctx).execute();//forecast
+                    new Headlines_Parser().execute();
+                    new Distance_Parser().execute();
+                    new Today_In_History_Parser().execute();
+                }
+            });
+        }
+    }
+    public void distance_dialog(View view){
+        new Distance_Dialog(ctx);
     }
 }

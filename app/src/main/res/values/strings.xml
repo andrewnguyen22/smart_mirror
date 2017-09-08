@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Smart_Mirror</string>
+    <string name="enable_perm">Please enable all permissions</string>
 </resources>
