@@ -7,8 +7,8 @@ import com.example.andrew_nguyen.smart_mirror.tools.Http_Service;
  */
 
 public class Today_In_History_Call {
-    final String url = "http://history.muffinlabs.com/date";
+    final String URL = "http://history.muffinlabs.com/date";
     public String make_history_call(){
-        return Http_Service.get_json(url);
+        return Http_Service.get_json(URL);
     }
 }

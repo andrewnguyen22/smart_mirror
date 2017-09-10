@@ -44,7 +44,7 @@ public class Today_In_History_Parser extends AsyncTask<Void, Void, Void>{
                 @Override
                 public void run() {
                     Random random = new Random();
-                    int i = random.nextInt(events.length() - 0 +1);
+                    int i = random.nextInt(events.length());
                     Home.today_in_history_tv.setText(event_array[i].getText() + " - " + event_array[i].getYear());
                 }
             });

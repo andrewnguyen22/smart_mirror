@@ -589,7 +589,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="sans-serif-smallcaps"
                         android:gravity="center"
-                        android:text="Kelsey's Day"
+                        android:text="Kelsey's Schedule"
                         android:textColor="@android:color/white"
                         android:textSize="12dp" />
                 </LinearLayout>
@@ -752,7 +752,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="sans-serif-smallcaps"
                         android:gravity="center"
-                        android:text="Andrew's Day"
+                        android:text="Andrew's Schedule"
                         android:textColor="@android:color/white"
                         android:textSize="12dp" />
                 </LinearLayout>
@@ -936,10 +936,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
                         android:ellipsize="end"
                         android:fontFamily="sans-serif-condensed"
-                        android:lines="2"
+                        android:lines="1"
                         android:text="This is where a tweet goes"
                         android:textColor="@android:color/white"
                         android:textSize="6dp" />
@@ -949,10 +950,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tweet_1"
-                        android:layout_marginBottom="4dp"
                         android:ellipsize="end"
+                        android:layout_marginBottom="2dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:lines="2"
+                        android:lines="1"
                         android:text="This is where a tweet goes"
                         android:textColor="@android:color/white"
                         android:textSize="6dp" />
@@ -965,7 +966,43 @@
                         android:layout_marginBottom="2dp"
                         android:ellipsize="end"
                         android:fontFamily="sans-serif-condensed"
-                        android:lines="2"
+                        android:lines="1"
+                        android:text="This is where a tweet goes"
+                        android:textColor="@android:color/white"
+                        android:textSize="6dp" />
+                    <TextView
+                        android:id="@+id/tweet_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tweet_3"
+                        android:layout_marginBottom="2dp"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lines="1"
+                        android:text="This is where a tweet goes"
+                        android:textColor="@android:color/white"
+                        android:textSize="6dp" />
+                    <TextView
+                        android:id="@+id/tweet_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tweet_4"
+                        android:layout_marginBottom="2dp"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lines="1"
+                        android:text="This is where a tweet goes"
+                        android:textColor="@android:color/white"
+                        android:textSize="6dp" />
+                    <TextView
+                        android:id="@+id/tweet_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tweet_5"
+                        android:layout_marginBottom="2dp"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lines="1"
                         android:text="This is where a tweet goes"
                         android:textColor="@android:color/white"
                         android:textSize="6dp" />
@@ -1248,7 +1285,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Chicken"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1262,7 +1298,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Peanut Butter"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1276,7 +1311,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Tomatoes"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1290,7 +1324,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Apples"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1304,7 +1337,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Muscle Milks"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1318,7 +1350,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Pizza Sauce"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1332,7 +1363,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Pizza Crusts"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1346,7 +1376,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Turkey Chili"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1360,7 +1389,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Bananas"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1374,7 +1402,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Tomatoes"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1388,7 +1415,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Chocolate Chips"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1401,7 +1427,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Paper Plates"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
                         </RelativeLayout>
@@ -1422,7 +1447,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Chicken"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1436,7 +1460,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Peanut Butter"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1450,7 +1473,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Tomatoes"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1464,7 +1486,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Apples"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1478,7 +1499,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Muscle Milks"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1492,7 +1512,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Pizza Sauce"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1506,7 +1525,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Pizza Crusts"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1520,7 +1538,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Turkey Chili"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1534,7 +1551,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Bananas"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1548,7 +1564,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Tomatoes"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1562,7 +1577,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Chocolate Chips"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 
@@ -1575,7 +1589,6 @@
                                 android:ellipsize="end"
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
-                                android:text="Paper Plates"
                                 android:textColor="@android:color/white"
                                 android:textSize="8dp" />
 

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Smart_Mirror</string>
     <string name="enable_perm">Please enable all permissions</string>
+
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">xte7b8g3V8MpVYPCO4Z10mJtJ</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">sVGGgJvl5GoX7RZ1FuhhM4YbkuIKL1ImQarqJZCjq8lJeiFOPl
+</string>
+
 </resources>
