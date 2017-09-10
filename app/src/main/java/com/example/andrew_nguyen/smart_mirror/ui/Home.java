@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
+import android.media.MediaPlayer;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -121,33 +124,9 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
             gitem22_tv,
             gitem23_tv,
             gitem24_tv;
-    String gitem1,
-            gitem2,
-            gitem3,
-            gitem4,
-            gitem5,
-            gitem6,
-            gitem7,
-            gitem8,
-            gitem9,
-            gitem10,
-            gitem11,
-            gitem12,
-            gitem13,
-            gitem14,
-            gitem15,
-            gitem16,
-            gitem17,
-            gitem18,
-            gitem19,
-            gitem20,
-            gitem21,
-            gitem22,
-            gitem23,
-            gitem24;
+
     //Quote of the day
     public static TextView quote_of_the_day_tv;
-    String quote_of_the_day;
 
     //Trending Topics
     public static TextView tweet1_tv,
@@ -178,12 +157,16 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
             k_event7_tv,
             k_event8_tv,
             k_event9_tv;
-
+    byte lights_status = 1;
+    MediaPlayer light_switch_sound;
     //Latitude and Longitude
     public static double latitude, longitude;
     public static String cityname, statename;
     //Context
     Context ctx;
+
+    LinearLayout topBar, blue_bar_top, r_top, driving, r_mid_blue_bar, history, rbot_blue_bar, grocery, left_sidebar;
+    RelativeLayout middle;
 
     @Override
 
@@ -286,6 +269,18 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
         k_event7_tv = (TextView) findViewById(R.id.kelseys_7_task);
         k_event8_tv = (TextView) findViewById(R.id.kelseys_8_task);
         k_event9_tv = (TextView) findViewById(R.id.kelseys_9_task);
+        //Linear Layouts for lights out functionality
+        topBar = (LinearLayout) findViewById(R.id.top_bar);
+        blue_bar_top = (LinearLayout) findViewById(R.id.blue_bar_top);
+        middle= (RelativeLayout) findViewById(R.id.middle_ll);
+        r_top= (LinearLayout) findViewById(R.id.rtopSidebar_blue_bar);
+        driving = (LinearLayout) findViewById(R.id.driving_box);
+        r_mid_blue_bar = (LinearLayout) findViewById(R.id.rmid_blue_bar);
+        history= (LinearLayout) findViewById(R.id.tod_in_his);
+        rbot_blue_bar= (LinearLayout) findViewById(R.id.rbot_blue_bar);
+        grocery = (LinearLayout) findViewById(R.id.grocery_list);
+        left_sidebar = (LinearLayout) findViewById(R.id.left_sidebar_linear_layout) ;
+        light_switch_sound = MediaPlayer.create(this, R.raw.swtch);
         //End Variable Declaration *
         Timer timer = new Timer();
         timer.schedule(new Update_UI(), 1000, 300000);
@@ -353,7 +348,40 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
         new Calendar_Call(ctx, KPRIMCALID);
         new Calendar_Call(ctx, KUSFCALID);
     }
-
+    public void lights_out(View view){
+        if(lights_status==1) {
+            topBar.setVisibility(View.INVISIBLE);
+            blue_bar_top.setVisibility(View.INVISIBLE);
+            middle.setVisibility(View.INVISIBLE);
+            r_top.setVisibility(View.INVISIBLE);
+            driving.setVisibility(View.INVISIBLE);
+            r_mid_blue_bar.setVisibility(View.INVISIBLE);
+            history.setVisibility(View.INVISIBLE);
+            next_button_iv.setVisibility(View.INVISIBLE);
+            rbot_blue_bar.setVisibility(View.INVISIBLE);
+            grocery.setVisibility(View.INVISIBLE);
+            left_sidebar.setVisibility(View.INVISIBLE);
+            light_switch_sound.start();
+            lightswitch_iv.setImageResource(R.drawable.light_off);
+            lights_status=0;
+        }
+        else{
+            topBar.setVisibility(View.VISIBLE);
+            blue_bar_top.setVisibility(View.VISIBLE);
+            middle.setVisibility(View.VISIBLE);
+            r_top.setVisibility(View.VISIBLE);
+            driving.setVisibility(View.VISIBLE);
+            r_mid_blue_bar.setVisibility(View.VISIBLE);
+            history.setVisibility(View.VISIBLE);
+            next_button_iv.setVisibility(View.VISIBLE);
+            rbot_blue_bar.setVisibility(View.VISIBLE);
+            grocery.setVisibility(View.VISIBLE);
+            left_sidebar.setVisibility(View.VISIBLE);
+            light_switch_sound.start();
+            lightswitch_iv.setImageResource(R.drawable.light_on);
+            lights_status=1;
+        }
+    }
     //************************************************
     //Below Is Google Boilerplate Code
     //************************************************

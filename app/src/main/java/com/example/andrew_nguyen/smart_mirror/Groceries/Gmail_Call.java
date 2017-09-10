@@ -132,7 +132,7 @@ public class Gmail_Call {
         @Override
         protected void onPostExecute(String output) {
             if (TextUtils.isEmpty(output)) {
-                Log.e("GMAIL CALL: ", "No results returned.");
+                Groceries_Parser.parse(" ");
             } else {
                 Log.e("GMAIL CALL: ", output);
                 Groceries_Parser.parse(output);

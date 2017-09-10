@@ -33,7 +33,7 @@ public class QOD_Parser extends AsyncTask<Void, Void, Void> {
             uiHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Home.quote_of_the_day_tv.setText(quote + " - " + author);
+                    Home.quote_of_the_day_tv.setText(quote + " \n- " + author);
                 }
             });
 
