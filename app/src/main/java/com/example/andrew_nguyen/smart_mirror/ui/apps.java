@@ -13,39 +13,31 @@ import android.view.WindowManager;
 
 import com.example.andrew_nguyen.smart_mirror.R;
 
-public class Apps extends AppCompatActivity {
+public class Apps extends Fragment {
     Context ctx;
+
+    public Apps() {
+        //constructor
+    }
+
+    public static Apps newInstance(String example_argument) {
+        Apps apps = new Apps();
+        return apps;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.apps);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//Remove the status bar
-        ctx= this;
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.apps, container, false);
     }
-    public void spotify(View view){
-        openApp(ctx, "com.google.android.apps.maps");
-    }
-    public void instagram(View view){
-        openApp(ctx, "com.google.android.apps.maps");
-    }
-    public void youtube(View view){
-        openApp(ctx, "com.google.android.apps.maps");
-    }
-    public void pinterest(View view){
-        openApp(ctx, "com.google.android.apps.maps");
-    }
-    public void gmail(View view){
-        openApp(ctx, "com.google.android.apps.maps");
-    }
-    public void facebook(View view){
-        openApp(ctx, "com.google.android.apps.maps");
-    }
-    public void twitter(View view){
-        openApp(ctx, "com.google.android.apps.maps");
-    }
-    public void timer(View view){
-        openApp(ctx, "com.google.android.apps.maps");
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+
     }
 
     public static boolean openApp(Context context, String packageName) {

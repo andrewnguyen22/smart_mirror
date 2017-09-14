@@ -15,7 +15,6 @@
         android:screenOrientation="landscape"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Home" />
         <activity android:name=".ui.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.Runtime_Permissions" />
-        <activity android:name=".ui.Apps" />
+        <activity android:name=".ui.Main"></activity>
     </application>
 
 </manifest>

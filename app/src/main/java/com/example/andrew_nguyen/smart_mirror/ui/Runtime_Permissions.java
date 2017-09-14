@@ -35,7 +35,7 @@ public class Runtime_Permissions extends Permissions {
     public void onPermissionsGranted(int requestCode){
         //User -> Permissions Granted
         System.out.println("Permission Granted");
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, Main.class);
         startActivity(intent);
         finish();
     }
