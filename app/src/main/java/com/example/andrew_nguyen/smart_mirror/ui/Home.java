@@ -5,6 +5,7 @@ import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ResolveInfo;
 import android.location.Location;
 import android.location.LocationListener;
 import android.media.MediaPlayer;
@@ -303,6 +304,12 @@ public class Home extends Fragment{
         //End Variable Declaration *
         Timer timer = new Timer();
         timer.schedule(new Update_UI(), 1000, 300000);
+        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        List<ResolveInfo> pkgAppsList = getActivity().getPackageManager().queryIntentActivities( mainIntent, 0);
+        for (int i = 0; i<pkgAppsList.size(); i++){
+            System.out.println("List of installed apps: App #" + i +  " - " + pkgAppsList.get(i));
+        }
     }
 
     public static void onLocationChanged(Location location, Context ctx) {

@@ -36,6 +36,12 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
         //setup viewpager
         setupViewPager();
     }
+    //TODO install back button app + all needed apps on android device prior to installing smart mirror
+    //TODO make app the launcher, disable home button etc.
+    @Override
+    public void onBackPressed(){
+        //do nothing
+    }
     private void setupViewPager() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
