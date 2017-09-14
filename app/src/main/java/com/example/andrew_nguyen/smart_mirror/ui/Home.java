@@ -96,8 +96,7 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
     public static TextView today_in_history_tv;
 
     //Lightswitch & Button
-    ImageView lightswitch_iv,
-            next_button_iv;
+    ImageView lightswitch_iv;
 
     //Grocery List
     public static TextView gitem1_tv,
@@ -214,7 +213,6 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
         today_in_history_tv = (TextView) findViewById(R.id.today_in_history);
         //Light switch and next button
         lightswitch_iv = (ImageView) findViewById(R.id.lightswitch_iv);
-        next_button_iv = (ImageView) findViewById(R.id.next_page_button);
         //Grocery List
         gitem1_tv = (TextView) findViewById(R.id.shopping_item_1);
         gitem2_tv = (TextView) findViewById(R.id.shopping_item_2);
@@ -357,7 +355,6 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
             driving.setVisibility(View.INVISIBLE);
             r_mid_blue_bar.setVisibility(View.INVISIBLE);
             history.setVisibility(View.INVISIBLE);
-            next_button_iv.setVisibility(View.INVISIBLE);
             rbot_blue_bar.setVisibility(View.INVISIBLE);
             grocery.setVisibility(View.INVISIBLE);
             left_sidebar.setVisibility(View.INVISIBLE);
@@ -373,7 +370,6 @@ public class Home extends AppCompatActivity implements LocationListener, EasyPer
             driving.setVisibility(View.VISIBLE);
             r_mid_blue_bar.setVisibility(View.VISIBLE);
             history.setVisibility(View.VISIBLE);
-            next_button_iv.setVisibility(View.VISIBLE);
             rbot_blue_bar.setVisibility(View.VISIBLE);
             grocery.setVisibility(View.VISIBLE);
             left_sidebar.setVisibility(View.VISIBLE);
