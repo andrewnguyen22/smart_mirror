@@ -48,12 +48,13 @@ public class Calendar_Call {
         if (!Google_Utils.isGooglePlayServicesAvailable(ctx)) {
             Google_Utils.acquireGooglePlayServices(ctx);
         } else if (mCredential.getSelectedAccountName() == null) {
+            Log.e("Calendar: ", "Account is currently null");
             Google_Utils.chooseAccount(ctx, calendar_id, mCredential, "calendar");
         } else if (!Google_Utils.isDeviceOnline(ctx)) {
             Log.e("Calendar: ", "No network connection available.");
         } else {
             new MakeRequestTask(mCredential, ctx, calendar_id).execute();
-            Log.e("Calendar: ", "Made it tonew Request Tak");
+            Log.e("Calendar: ", "Requesting calendars...");
         }
     }
 
@@ -65,7 +66,6 @@ public class Calendar_Call {
         MakeRequestTask(GoogleAccountCredential credential, Context c, String ci) {
             ctx = c;
             calendar_id = ci;
-            Log.e("Calendar: ", "Made it to MAKErequestTask");
             HttpTransport transport = AndroidHttp.newCompatibleTransport();
             JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
             mService = new com.google.api.services.calendar.Calendar.Builder(
@@ -76,7 +76,7 @@ public class Calendar_Call {
 
         @Override
         protected List<String> doInBackground(Void... params) {
-            Log.e("Calendar: ", "Made it to doiBackground");
+            Log.e("Calendar: ", "Background task initiated...");
             try {
                 return getDataFromApi(calendar_id);
             } catch (Exception e) {
@@ -90,7 +90,7 @@ public class Calendar_Call {
          * Fetch a list of the next 10 events from the primary calendar.
          */
         private List<String> getDataFromApi(String calendar_id) throws IOException {
-            Log.e("Calendar: ", "getDataFromApi");
+            Log.e("Calendar: ", "Getting Data From Api...");
             // List the next 10 events from the primary calendar.
             DateTime now = new DateTime(System.currentTimeMillis());
             List<String> eventStrings = new ArrayList<String>();

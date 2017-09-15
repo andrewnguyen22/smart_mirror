@@ -1,8 +1,7 @@
-package com.example.andrew_nguyen.smart_mirror.Groceries;
+package com.example.andrew_nguyen.smart_mirror.groceries;
 
 import com.example.andrew_nguyen.smart_mirror.tools.Google_Utils;
 import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.googleapis.GoogleUtils;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
@@ -10,23 +9,17 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecovera
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.util.Base64;
 import com.google.api.client.util.ExponentialBackOff;
 
-import com.google.api.client.util.StringUtils;
-import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 
 import com.google.api.services.gmail.model.*;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;

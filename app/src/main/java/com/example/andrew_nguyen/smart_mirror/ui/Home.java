@@ -1,31 +1,19 @@
 package com.example.andrew_nguyen.smart_mirror.ui;
 
-import android.Manifest;
-import android.accounts.AccountManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.ResolveInfo;
 import android.location.Location;
-import android.location.LocationListener;
 import android.media.MediaPlayer;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.andrew_nguyen.smart_mirror.Groceries.Gmail_Call;
+import com.example.andrew_nguyen.smart_mirror.groceries.Gmail_Call;
 import com.example.andrew_nguyen.smart_mirror.R;
 import com.example.andrew_nguyen.smart_mirror.driving_distance.Distance_Dialog;
 import com.example.andrew_nguyen.smart_mirror.driving_distance.Distance_Parser;
@@ -37,16 +25,10 @@ import com.example.andrew_nguyen.smart_mirror.quote_of_the_day.QOD_Parser;
 import com.example.andrew_nguyen.smart_mirror.today_in_history.Today_In_History_Parser;
 import com.example.andrew_nguyen.smart_mirror.todays_weather.Todays_Weather_Parser;
 import com.example.andrew_nguyen.smart_mirror.tools.Tools;
-import com.example.andrew_nguyen.smart_mirror.twitter.Constant_Utils;
 import com.example.andrew_nguyen.smart_mirror.twitter.Get_Trends;
 
-import java.util.Calendar;
-import java.util.EventListener;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import pub.devrel.easypermissions.EasyPermissions;
 
 public class Home extends Fragment{
     final String TAG = "Home";
@@ -304,12 +286,6 @@ public class Home extends Fragment{
         //End Variable Declaration *
         Timer timer = new Timer();
         timer.schedule(new Update_UI(), 1000, 300000);
-        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> pkgAppsList = getActivity().getPackageManager().queryIntentActivities( mainIntent, 0);
-        for (int i = 0; i<pkgAppsList.size(); i++){
-            System.out.println("List of installed apps: App #" + i +  " - " + pkgAppsList.get(i));
-        }
     }
 
     public static void onLocationChanged(Location location, Context ctx) {

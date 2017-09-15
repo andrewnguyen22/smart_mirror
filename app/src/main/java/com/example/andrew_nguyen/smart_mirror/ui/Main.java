@@ -1,9 +1,12 @@
 package com.example.andrew_nguyen.smart_mirror.ui;
 
 import android.accounts.AccountManager;
+import android.app.Activity;
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ResolveInfo;
 import android.location.Location;
 import android.location.LocationListener;
 import android.support.annotation.NonNull;
@@ -15,10 +18,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.example.andrew_nguyen.smart_mirror.Groceries.Gmail_Call;
+import com.example.andrew_nguyen.smart_mirror.groceries.Gmail_Call;
 import com.example.andrew_nguyen.smart_mirror.R;
 import com.example.andrew_nguyen.smart_mirror.google_calendar.Calendar_Call;
 import com.example.andrew_nguyen.smart_mirror.tools.FragmentAdapter;
+import com.example.andrew_nguyen.smart_mirror.tools.Google_Utils;
 
 import java.util.List;
 
@@ -30,14 +34,25 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//Remove the status bar
         setContentView(R.layout.main);
         ctx = this;
         //setup viewpager
         setupViewPager();
+        //List apps installed on device
+        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities( mainIntent, 0);
+        for (int i = 0; i<pkgAppsList.size(); i++){
+            System.out.println("List of installed apps: App #" + i +  " - " + pkgAppsList.get(i));
+        }
+        //Disable lockscreen
+        KeyguardManager keyguardManager = (KeyguardManager)getSystemService(Activity.KEYGUARD_SERVICE);
+        KeyguardManager.KeyguardLock lock = keyguardManager.newKeyguardLock(KEYGUARD_SERVICE);
+        lock.disableKeyguard();
     }
     //TODO install back button app + all needed apps on android device prior to installing smart mirror
-    //TODO make app the launcher, disable home button etc.
     @Override
     public void onBackPressed(){
         //do nothing
@@ -111,6 +126,7 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
     static final int REQUEST_ACCOUNT_PICKER = 1000;
     static final int REQUEST_AUTHORIZATION = 1001;
     static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
+    static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
     private static final String PREF_ACCOUNT_NAME = "accountName";
 
     @Override
@@ -127,10 +143,10 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-        ((AppCompatActivity) this).onRequestPermissionsResult(requestCode, permissions, grantResults);
+        onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(
                 requestCode, permissions, grantResults, this);
-        Log.e("Main", "Made it to onRequestPermissionsResult");
+        Log.e("Main", "Requesting Permissions via Easy Permissions...");
     }
 
     @Override
@@ -149,12 +165,12 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
                 }
                 break;
             case REQUEST_ACCOUNT_PICKER:
-                Log.e("Main", "REQUEST");
+                Log.e("Main", "Requested Account Name Via Account Picker...");
                 if (resultCode == RESULT_OK && data != null &&
                         data.getExtras() != null) {
                     String accountName =
                             data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
-                    Log.e("Main", "ACCOUNT NAME = " + accountName);
+                    Log.e("Main", "Account name is " + accountName);
                     if (accountName != null) {
                         SharedPreferences settings =
                                 getPreferences(Context.MODE_PRIVATE);
@@ -170,10 +186,19 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
                 break;
             case REQUEST_AUTHORIZATION:
                 if (resultCode == RESULT_OK) {
+                    Log.e("Main", "Request authorization: result is okay...");
                     Home.update_calendars(this);
                     new Gmail_Call(this);
                 }
                 break;
+            case REQUEST_PERMISSION_GET_ACCOUNTS:{
+                if(resultCode == RESULT_OK){
+                    Log.e("Main", "Get accounts has now been authorized");
+                    Home.update_calendars(this);
+                    new Gmail_Call(this);
+                }
+            }
         }
+
     }
 }

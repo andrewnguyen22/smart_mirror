@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.example.andrew_nguyen.smart_mirror.Groceries.Gmail_Call;
+import com.example.andrew_nguyen.smart_mirror.groceries.Gmail_Call;
 import com.example.andrew_nguyen.smart_mirror.google_calendar.Calendar_Call;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -65,10 +65,12 @@ public class Google_Utils {
 
     public static void chooseAccount(Context ctx, String calendar_id, GoogleAccountCredential mCredential, String TAG) {
         //TODO Google authentication is all sorts of incorrect please fix...
-        Log.e("Calendar: ", "Made it to choose account");
+        Log.e("Calendar: ", "Choosing account...");
         if (EasyPermissions.hasPermissions(ctx, Manifest.permission.GET_ACCOUNTS)) {
+            Log.e("Calendar: ", "Made it past the first if");
             String accountName = ((AppCompatActivity) ctx).getPreferences(Context.MODE_PRIVATE).getString(PREF_ACCOUNT_NAME, null);
             if (accountName != null) {
+                Log.e("Calendar: ", "Made it past the 2nd if");
                 Log.e("calendar", accountName);
                 mCredential.setSelectedAccountName(accountName);
                 if(TAG.equals("calendar")) {
@@ -79,13 +81,14 @@ public class Google_Utils {
                 }
 
             } else {
+                Log.e("Calendar: ", "DIDNt Make it past the 1st if");
                 // Start a dialog from which the user can choose an account
                 ((AppCompatActivity) ctx).startActivityForResult(
                         mCredential.newChooseAccountIntent(),
-                        REQUEST_ACCOUNT_PICKER);
+                        REQUEST_ACCOUNT_PICKER);//TODO i think problem is here
             }
         } else {
-            Log.e("Calendar: ", "Made it to MAKelse of choose account");
+            Log.e("Calendar: ", "Easy Permissions does not have permission to run yet...");
             // Request the GET_ACCOUNTS permission via a user dialog
             EasyPermissions.requestPermissions(((AppCompatActivity) ctx), "This app needs to access your Google account (via Contacts).", REQUEST_PERMISSION_GET_ACCOUNTS, Manifest.permission.GET_ACCOUNTS);
         }

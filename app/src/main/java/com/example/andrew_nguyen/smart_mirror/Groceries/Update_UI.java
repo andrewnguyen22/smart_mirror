@@ -1,4 +1,4 @@
-package com.example.andrew_nguyen.smart_mirror.Groceries;
+package com.example.andrew_nguyen.smart_mirror.groceries;
 
 import android.os.Handler;
 import android.os.Looper;
