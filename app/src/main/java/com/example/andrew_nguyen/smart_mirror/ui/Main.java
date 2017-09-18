@@ -1,5 +1,6 @@
 package com.example.andrew_nguyen.smart_mirror.ui;
 
+import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.KeyguardManager;
@@ -22,14 +23,14 @@ import com.example.andrew_nguyen.smart_mirror.groceries.Gmail_Call;
 import com.example.andrew_nguyen.smart_mirror.R;
 import com.example.andrew_nguyen.smart_mirror.google_calendar.Calendar_Call;
 import com.example.andrew_nguyen.smart_mirror.tools.FragmentAdapter;
-import com.example.andrew_nguyen.smart_mirror.tools.Google_Utils;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 
 import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class Main extends AppCompatActivity implements LocationListener, EasyPermissions.PermissionCallbacks {
-    Context ctx;
+    public static Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +44,22 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
         //List apps installed on device
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities( mainIntent, 0);
-        for (int i = 0; i<pkgAppsList.size(); i++){
-            System.out.println("List of installed apps: App #" + i +  " - " + pkgAppsList.get(i));
+        List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities(mainIntent, 0);
+        for (int i = 0; i < pkgAppsList.size(); i++) {
+            System.out.println("List of installed apps: App #" + i + " - " + pkgAppsList.get(i));
         }
         //Disable lockscreen
-        KeyguardManager keyguardManager = (KeyguardManager)getSystemService(Activity.KEYGUARD_SERVICE);
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Activity.KEYGUARD_SERVICE);
         KeyguardManager.KeyguardLock lock = keyguardManager.newKeyguardLock(KEYGUARD_SERVICE);
         lock.disableKeyguard();
     }
+
     //TODO install back button app + all needed apps on android device prior to installing smart mirror
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         //do nothing
     }
+
     private void setupViewPager() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
@@ -149,10 +152,11 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
         Log.e("Main", "Requesting Permissions via Easy Permissions...");
     }
 
+
     @Override
-    public void onActivityResult(
-            int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.e("Main", "RESULT PROCESSED AS" + requestCode);
         switch (requestCode) {
             case REQUEST_GOOGLE_PLAY_SERVICES:
                 if (resultCode != RESULT_OK) {
@@ -178,8 +182,6 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
                         editor.putString(PREF_ACCOUNT_NAME, accountName);
                         editor.apply();
                         Calendar_Call.mCredential.setSelectedAccountName(accountName);
-                        Gmail_Call.mCredential.setSelectedAccountName(accountName);
-                        new Gmail_Call(this);
                         Home.update_calendars(this);
                     }
                 }
@@ -191,8 +193,8 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
                     new Gmail_Call(this);
                 }
                 break;
-            case REQUEST_PERMISSION_GET_ACCOUNTS:{
-                if(resultCode == RESULT_OK){
+            case REQUEST_PERMISSION_GET_ACCOUNTS: {
+                if (resultCode == RESULT_OK) {
                     Log.e("Main", "Get accounts has now been authorized");
                     Home.update_calendars(this);
                     new Gmail_Call(this);
@@ -200,5 +202,31 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
             }
         }
 
+    }
+
+    public static int count = 0;
+    public static void chooseAccount(GoogleAccountCredential mCredential) {
+        //TODO Google authentication is all sorts of incorrect please fix...
+        Log.e("Calendar: ", "Choosing account...");
+        if (EasyPermissions.hasPermissions(ctx, Manifest.permission.GET_ACCOUNTS)) {
+            Log.e("Calendar: ", "Easy Permissions is available...");
+            String accountName = ((Main)ctx).getPreferences(Context.MODE_PRIVATE).getString(PREF_ACCOUNT_NAME, null);
+            if (accountName != null) {
+                Log.e("Calendar: ", "account name is not null...");
+                Log.e("calendar", accountName);
+                mCredential.setSelectedAccountName(accountName);
+                Calendar_Call.getResultsFromApi((Main)ctx);
+            } else {
+                Log.e("Calendar: ", "Start activity for result called");
+                // Start a dialog from which the user can choose an account
+                ((Main)ctx).startActivityForResult(
+                        mCredential.newChooseAccountIntent(),
+                        REQUEST_ACCOUNT_PICKER);
+            }
+        } else {
+            Log.e("Calendar: ", "Easy Permissions does not have permission to run yet...");
+            // Request the GET_ACCOUNTS permission via a user dialog
+            EasyPermissions.requestPermissions(((AppCompatActivity) ctx), "This app needs to access your Google account (via Contacts).", REQUEST_PERMISSION_GET_ACCOUNTS, Manifest.permission.GET_ACCOUNTS);
+        }
     }
 }

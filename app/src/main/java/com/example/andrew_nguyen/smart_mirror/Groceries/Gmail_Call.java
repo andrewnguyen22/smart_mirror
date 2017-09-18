@@ -1,6 +1,8 @@
 package com.example.andrew_nguyen.smart_mirror.groceries;
 
+import com.example.andrew_nguyen.smart_mirror.google_calendar.Calendar_Call;
 import com.example.andrew_nguyen.smart_mirror.tools.Google_Utils;
+import com.example.andrew_nguyen.smart_mirror.ui.Main;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
@@ -30,9 +32,9 @@ public class Gmail_Call {
     public static GoogleAccountCredential mCredential;
     static final int REQUEST_AUTHORIZATION = 1001;
     private static final String[] SCOPES = {GmailScopes.GMAIL_READONLY};
-    static Context ctx;
+    static Main ctx;
 
-    public Gmail_Call(Context ctx) {
+    public Gmail_Call(Main ctx) {
         this.ctx = ctx;
         mCredential = GoogleAccountCredential.usingOAuth2(ctx.getApplicationContext(), Arrays.asList(SCOPES)).setBackOff(new ExponentialBackOff());getResultsFromApi();
     }
@@ -45,10 +47,11 @@ public class Gmail_Call {
      * appropriate.
      */
     public static void getResultsFromApi() {
+        mCredential.setSelectedAccountName(Calendar_Call.mCredential.getSelectedAccountName().toString());
         if (!Google_Utils.isGooglePlayServicesAvailable(ctx)) {
             Google_Utils.acquireGooglePlayServices(ctx);
         } else if (mCredential.getSelectedAccountName() == null) {
-            Google_Utils.chooseAccount(ctx, "", mCredential, "gmail");
+            ctx.chooseAccount(mCredential);
         } else if (!Google_Utils.isDeviceOnline(ctx)) {
             Log.e("GMAIL CALL: ", "No network connection available.");
         } else {

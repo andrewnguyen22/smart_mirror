@@ -7,7 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.andrew_nguyen.smart_mirror.groceries.Gmail_Call;
 import com.example.andrew_nguyen.smart_mirror.tools.Google_Utils;
+import com.example.andrew_nguyen.smart_mirror.ui.Main;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
@@ -34,36 +36,73 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class Calendar_Call {
     public static GoogleAccountCredential mCredential;
-    Context ctx;
-    private final String TAG = "Calendar Class: ";
+    Main ctx;
     private static final String[] SCOPES = {CalendarScopes.CALENDAR_READONLY};
 
+    final String AUSFCALID = "c0dgk1pj046hv0p5q2ba5ole25r1qo9g@import.calendar.google.com";
 
-    public Calendar_Call(Context c, String calendar_id) {
+
+
+    public Calendar_Call(Main c) {
         ctx = c;
-        mCredential = GoogleAccountCredential.usingOAuth2(ctx.getApplicationContext(), Arrays.asList(SCOPES)).setBackOff(new ExponentialBackOff());getResultsFromApi(ctx, calendar_id);
+        mCredential = GoogleAccountCredential.usingOAuth2(ctx.getApplicationContext(), Arrays.asList(SCOPES)).setBackOff(new ExponentialBackOff());
+        getResultsFromApi(ctx);
     }
 
-    public static void getResultsFromApi(Context ctx, String calendar_id) {
+    public static int count =0;
+    public static void getResultsFromApi(Main ctx) {
+        final String AUSFCALID = "c0dgk1pj046hv0p5q2ba5ole25r1qo9g@import.calendar.google.com";
+        final String APRIMCALID = "amnguyen1@mail.usf.edu";
+        final String KUSFCALID = "th6857fot65vrhjf1d7edgdsnr1c1d4s@import.calendar.google.com";
+        final String KPRIMCALID = "kelseyk1@mail.usf.edu";
+
         if (!Google_Utils.isGooglePlayServicesAvailable(ctx)) {
             Google_Utils.acquireGooglePlayServices(ctx);
         } else if (mCredential.getSelectedAccountName() == null) {
             Log.e("Calendar: ", "Account is currently null");
-            Google_Utils.chooseAccount(ctx, calendar_id, mCredential, "calendar");
+           ctx.chooseAccount(mCredential);
         } else if (!Google_Utils.isDeviceOnline(ctx)) {
             Log.e("Calendar: ", "No network connection available.");
         } else {
-            new MakeRequestTask(mCredential, ctx, calendar_id).execute();
-            Log.e("Calendar: ", "Requesting calendars...");
+            for(int i =0; i<5;i++) {
+                switch (count) {
+                    case 0:
+                        new MakeRequestTask(mCredential, ctx, AUSFCALID).execute();
+                        count++;
+                        Log.e("Calendar: ", "Requesting calendar "+ (i+1));
+                        break;
+                    case 1:
+                        new MakeRequestTask(mCredential, ctx, APRIMCALID).execute();
+                        count++;
+                        Log.e("Calendar: ", "Requesting calendar "+ (i+1));
+                        break;
+                    case 2:
+                        new MakeRequestTask(mCredential, ctx, KUSFCALID).execute();
+                        count++;
+                        Log.e("Calendar: ", "Requesting calendar "+ (i+1));
+                        break;
+                    case 3:
+                        new MakeRequestTask(mCredential, ctx, KPRIMCALID).execute();
+                        count++;
+                        Log.e("Calendar: ", "Requesting calendar "+ (i+1));
+                        break;
+                    case 4:
+                        new Gmail_Call(ctx);
+                        Gmail_Call.getResultsFromApi();
+                        Log.e("Calendar: ", "Requesting gmail "+ i);
+                        count = 0;
+                        break;
+                }
+            }
         }
     }
 
     private static class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
         private com.google.api.services.calendar.Calendar mService = null;
         private Exception mLastError = null;
-        Context ctx;
+        Main ctx;
         String calendar_id;
-        MakeRequestTask(GoogleAccountCredential credential, Context c, String ci) {
+        MakeRequestTask(GoogleAccountCredential credential, Main c, String ci) {
             ctx = c;
             calendar_id = ci;
             HttpTransport transport = AndroidHttp.newCompatibleTransport();

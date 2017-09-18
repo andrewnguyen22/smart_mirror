@@ -25,7 +25,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.Splash"
-            android:launchMode="singleInstance"
             android:stateNotNeeded="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

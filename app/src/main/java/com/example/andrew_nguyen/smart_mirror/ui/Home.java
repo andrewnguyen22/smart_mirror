@@ -144,7 +144,7 @@ public class Home extends Fragment{
     public static double latitude, longitude;
     public static String cityname, statename;
     //Context
-    Context ctx;
+    Main ctx;
 
     LinearLayout topBar, blue_bar_top, r_top, driving, r_mid_blue_bar, history, rbot_blue_bar, grocery, left_sidebar;
     RelativeLayout middle;
@@ -166,7 +166,7 @@ public class Home extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         //Start Variable Declaration *
-        ctx = getActivity();
+        ctx = (Main) Main.ctx;
         //Today
         todays_weather_iv = (ImageView) getActivity().findViewById(R.id.todays_weather_icon);
         todays_weather_descript_tv = (TextView) getActivity().findViewById(R.id.weather_description);
@@ -306,6 +306,7 @@ public class Home extends Fragment{
                 @Override
                 public void run() {
                     Tools.get_lat_long(ctx);
+                    update_calendars(ctx);
                     new Todays_Weather_Parser(latitude, longitude, ctx).execute();
                     new Forecast_Weather_Parser(latitude, longitude, ctx).execute();//forecast
                     new Headlines_Parser().execute();
@@ -313,8 +314,6 @@ public class Home extends Fragment{
                     new Today_In_History_Parser().execute();
                     new QOD_Parser().execute();
                     new Get_Trends().execute();
-                    update_calendars(ctx);
-                    new Gmail_Call(ctx);
                 }
             });
         }
@@ -324,17 +323,11 @@ public class Home extends Fragment{
         new Distance_Dialog(ctx);
     }
 
-    public static void update_calendars(Context ctx) {
-        final String AUSFCALID = "c0dgk1pj046hv0p5q2ba5ole25r1qo9g@import.calendar.google.com";
-        final String APRIMCALID = "amnguyen1@mail.usf.edu";
-        final String KUSFCALID = "th6857fot65vrhjf1d7edgdsnr1c1d4s@import.calendar.google.com";
-        final String KPRIMCALID = "kelseyk1@mail.usf.edu";
+    public static void update_calendars(Main ctx) {
+        ctx.count=0;
         Event_Lists.reset_Andrews_event_list();
         Event_Lists.reset_Kelseys_event_list();
-        new Calendar_Call(ctx, APRIMCALID);
-        new Calendar_Call(ctx, AUSFCALID);
-        new Calendar_Call(ctx, KPRIMCALID);
-        new Calendar_Call(ctx, KUSFCALID);
+        new Calendar_Call(ctx);
     }
     public void lights_out(){
         if(lights_status==1) {
