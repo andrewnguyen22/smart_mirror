@@ -342,7 +342,7 @@ public class Home extends Fragment{
             grocery.setVisibility(View.INVISIBLE);
             left_sidebar.setVisibility(View.INVISIBLE);
             light_switch_sound.start();
-            lightswitch_iv.setImageResource(R.drawable.light_off);
+            lightswitch_iv.setImageResource(R.mipmap.light_off);
             lights_status=0;
         }
         else{
@@ -357,7 +357,7 @@ public class Home extends Fragment{
             grocery.setVisibility(View.VISIBLE);
             left_sidebar.setVisibility(View.VISIBLE);
             light_switch_sound.start();
-            lightswitch_iv.setImageResource(R.drawable.light_on);
+            lightswitch_iv.setImageResource(R.mipmap.light_on);
             lights_status=1;
         }
     }

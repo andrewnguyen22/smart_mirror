@@ -59,6 +59,7 @@
 
 
     <LinearLayout
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.15"
@@ -1167,10 +1168,10 @@
                     <ImageView
                         android:id="@+id/lightswitch_iv"
                         android:onClick="lights_out"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:soundEffectsEnabled="false"
-                        android:src="@drawable/light_on" />
+                        android:src="@mipmap/light_on" />
 
 
                 </LinearLayout>

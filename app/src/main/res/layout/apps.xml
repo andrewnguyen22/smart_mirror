@@ -20,28 +20,28 @@
             android:layout_weight="1"
             android:onClick="spotify"
             android:layout_margin="50dp"
-            android:src="@drawable/spotify"/>
+            android:src="@mipmap/spotify"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="50dp"
             android:onClick="instagram"
-            android:src="@drawable/instagram"/>
+            android:src="@mipmap/instagram"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="50dp"
             android:onClick="twitter"
-            android:src="@drawable/twitter"/>
+            android:src="@mipmap/twitter"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="50dp"
             android:onClick="facebook"
-            android:src="@drawable/facebook"/>
+            android:src="@mipmap/facebook"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -55,28 +55,28 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="50dp"
-            android:src="@drawable/youtube"/>
+            android:src="@mipmap/youtube"/>
         <ImageView
             android:layout_width="0dp"
             android:onClick="timer"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="50dp"
-            android:src="@drawable/timer"/>
+            android:src="@mipmap/timer"/>
         <ImageView
             android:layout_width="0dp"
             android:onClick="gmail"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="50dp"
-            android:src="@drawable/gmail"/>
+            android:src="@mipmap/gmail"/>
         <ImageView
             android:layout_width="0dp"
             android:onClick="pinterest"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="50dp"
-            android:src="@drawable/pinterest"/>
+            android:src="@mipmap/pinterest"/>
 
     </LinearLayout>
 </LinearLayout>
