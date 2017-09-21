@@ -69,35 +69,35 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
     }
 
     public void spotify(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.spotify.music");
     }
 
     public void instagram(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.instagram.android");
     }
 
     public void youtube(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.google.android.youtube");
     }
 
     public void pinterest(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.pinterest");
     }
 
     public void gmail(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.google.android.gm");
     }
 
     public void facebook(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.facebook.katana");
     }
 
     public void twitter(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.twitter.android");
     }
 
     public void timer(View view) {
-        Apps.openApp(ctx, "com.google.android.apps.maps");
+        Apps.openApp(ctx, "com.sportstracklive.stopwatch");
     }
 
     @Override
