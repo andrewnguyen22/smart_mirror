@@ -289,8 +289,11 @@ public class Home extends Fragment{
     }
 
     public static void onLocationChanged(Location location, Context ctx) {
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
+//        latitude = location.getLatitude();
+//        longitude = location.getLongitude();
+        //todo not working
+        latitude = 28.0771450;
+        longitude= -82.4221140;
 
         new Todays_Weather_Parser(latitude, longitude, ctx).execute();//Todays
         new Forecast_Weather_Parser(latitude, longitude, ctx).execute();//forecast
@@ -342,7 +345,7 @@ public class Home extends Fragment{
             grocery.setVisibility(View.INVISIBLE);
             left_sidebar.setVisibility(View.INVISIBLE);
             light_switch_sound.start();
-            lightswitch_iv.setImageResource(R.mipmap.light_off);
+            lightswitch_iv.setImageResource(R.drawable.light_off);
             lights_status=0;
         }
         else{
@@ -357,7 +360,7 @@ public class Home extends Fragment{
             grocery.setVisibility(View.VISIBLE);
             left_sidebar.setVisibility(View.VISIBLE);
             light_switch_sound.start();
-            lightswitch_iv.setImageResource(R.mipmap.light_on);
+            lightswitch_iv.setImageResource(R.drawable.light_on);
             lights_status=1;
         }
     }
