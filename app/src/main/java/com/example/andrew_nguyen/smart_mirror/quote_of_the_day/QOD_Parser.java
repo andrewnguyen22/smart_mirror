@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.example.andrew_nguyen.smart_mirror.tools.Tools;
 import com.example.andrew_nguyen.smart_mirror.ui.Home;
 
 import org.json.JSONArray;
@@ -28,12 +29,19 @@ public class QOD_Parser extends AsyncTask<Void, Void, Void> {
             JSONObject reader = new JSONObject(json);
             quote = reader.getString("quoteText");
             author = reader.getString("quoteAuthor");
+            quote= Tools.remove_special(quote);
+            author= Tools.remove_special(author);
+            quote= quote.toLowerCase();
+            author = author.toLowerCase();
 
             //Update UI
             uiHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Home.quote_of_the_day_tv.setText(quote + " - " + author);
+                    if(author!=null && !author.isEmpty())
+                        Home.quote_of_the_day_tv.setText(quote + " - " + author);
+                    else
+                        Home.quote_of_the_day_tv.setText(quote);
                 }
             });
 

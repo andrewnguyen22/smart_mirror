@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.example.andrew_nguyen.smart_mirror.tools.Tools;
 import com.example.andrew_nguyen.smart_mirror.ui.Home;
 
 import org.json.JSONArray;
@@ -35,8 +36,8 @@ public class Today_In_History_Parser extends AsyncTask<Void, Void, Void>{
             event_array = new Event[events.length()];
             for(int i =0; i<events.length(); i++){
                 event = events.getJSONObject(i);
-                year = event.getString("year");
-                text = event.getString("text");
+                year = Tools.remove_special(event.getString("year"));
+                text = Tools.remove_special(event.getString("text"));
                 event_array[i] = new Event(year, text);
             }
             //Update UI

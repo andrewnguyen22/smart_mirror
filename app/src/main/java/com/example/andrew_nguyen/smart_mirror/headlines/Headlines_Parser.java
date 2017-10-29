@@ -46,10 +46,10 @@ public class Headlines_Parser extends AsyncTask<Void, Void, Void> {
                     headlines[i] = title;
                 }
             }
-            headline_1 = headlines[0];
-            headline_2 = headlines[1];
-            headline_3 = headlines[2];
-            headline_4 = headlines[3];
+            headline_1 = Tools.remove_special(headlines[0]);
+            headline_2 = Tools.remove_special(headlines[1]);
+            headline_3 = Tools.remove_special(headlines[2]);
+            headline_4 = Tools.remove_special(headlines[3]);
 
         //Update UI...
         uiHandler.post(new Runnable() {

@@ -21,6 +21,9 @@ import com.example.andrew_nguyen.smart_mirror.forecast_weather.Forecast_Weather_
 import com.example.andrew_nguyen.smart_mirror.google_calendar.Calendar_Call;
 import com.example.andrew_nguyen.smart_mirror.google_calendar.Event_Lists;
 import com.example.andrew_nguyen.smart_mirror.headlines.Headlines_Parser;
+import com.example.andrew_nguyen.smart_mirror.latitude_longitude.Lat_Long_Call;
+import com.example.andrew_nguyen.smart_mirror.latitude_longitude.Lat_Long_Dialog;
+import com.example.andrew_nguyen.smart_mirror.led_control.LED_Async;
 import com.example.andrew_nguyen.smart_mirror.quote_of_the_day.QOD_Parser;
 import com.example.andrew_nguyen.smart_mirror.today_in_history.Today_In_History_Parser;
 import com.example.andrew_nguyen.smart_mirror.todays_weather.Todays_Weather_Parser;
@@ -30,7 +33,7 @@ import com.example.andrew_nguyen.smart_mirror.twitter.Get_Trends;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Home extends Fragment{
+public class Home extends Fragment {
     final String TAG = "Home";
 
     //Today's Weather
@@ -79,6 +82,7 @@ public class Home extends Fragment{
 
     //Lightswitch & Button
     ImageView lightswitch_iv;
+    ImageView lightswitch2_iv;
 
     //Grocery List
     public static TextView gitem1_tv,
@@ -114,8 +118,7 @@ public class Home extends Fragment{
             tweet2_tv,
             tweet3_tv,
             tweet4_tv,
-            tweet5_tv,
-            tweet6_tv;
+            tweet5_tv;
 
     //Andrews Schedule
     public static TextView a_event1_tv,
@@ -139,30 +142,38 @@ public class Home extends Fragment{
             k_event8_tv,
             k_event9_tv;
     byte lights_status = 1;
-    MediaPlayer light_switch_sound;
+    byte lights_status2 = 1;
+    //Address
+    public static String address = "";
     //Latitude and Longitude
     public static double latitude, longitude;
-    public static String cityname, statename;
+    public static String location_name;
     //Context
     Main ctx;
 
-    LinearLayout topBar, blue_bar_top, r_top, driving, r_mid_blue_bar, history, rbot_blue_bar, grocery, left_sidebar;
+    LinearLayout topBar, blue_bar_top, r_top, driving, r_mid_blue_bar, history, rbot_blue_bar, grocery, left_sidebar,
+            todays_weather_ll;
     RelativeLayout middle;
+
     public Home() {
         //Constructor
     }
+
     public static Home newInstance(String example_argument) {
-         Home tabFragmentOne = new Home();
+        Home tabFragmentOne = new Home();
         return tabFragmentOne;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.home, container, false);
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         //Start Variable Declaration *
@@ -211,6 +222,14 @@ public class Home extends Fragment{
                 lights_out();
             }
         });
+
+        lightswitch2_iv = (ImageView) getActivity().findViewById(R.id.lightswitch2_iv);
+        lightswitch2_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                led_on_off();
+            }
+        });
         //Grocery List
         gitem1_tv = (TextView) getActivity().findViewById(R.id.shopping_item_1);
         gitem2_tv = (TextView) getActivity().findViewById(R.id.shopping_item_2);
@@ -244,7 +263,6 @@ public class Home extends Fragment{
         tweet3_tv = (TextView) getActivity().findViewById(R.id.tweet_3);
         tweet4_tv = (TextView) getActivity().findViewById(R.id.tweet_4);
         tweet5_tv = (TextView) getActivity().findViewById(R.id.tweet_5);
-        tweet6_tv = (TextView) getActivity().findViewById(R.id.tweet_6);
         //Andrews Schedule
         a_event1_tv = (TextView) getActivity().findViewById(R.id.andrews_1_task);
         a_event2_tv = (TextView) getActivity().findViewById(R.id.andrews_2_task);
@@ -265,11 +283,11 @@ public class Home extends Fragment{
         k_event7_tv = (TextView) getActivity().findViewById(R.id.kelseys_7_task);
         k_event8_tv = (TextView) getActivity().findViewById(R.id.kelseys_8_task);
         k_event9_tv = (TextView) getActivity().findViewById(R.id.kelseys_9_task);
-        //Linear Layouts for lights out functionality
+        //Linear Layouts
         topBar = (LinearLayout) getActivity().findViewById(R.id.top_bar);
         blue_bar_top = (LinearLayout) getActivity().findViewById(R.id.blue_bar_top);
-        middle= (RelativeLayout) getActivity().findViewById(R.id.middle_ll);
-        r_top= (LinearLayout) getActivity().findViewById(R.id.rtopSidebar_blue_bar);
+        middle = (RelativeLayout) getActivity().findViewById(R.id.middle_ll);
+        r_top = (LinearLayout) getActivity().findViewById(R.id.rtopSidebar_blue_bar);
         driving = (LinearLayout) getActivity().findViewById(R.id.driving_box);
         driving.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,28 +296,35 @@ public class Home extends Fragment{
             }
         });
         r_mid_blue_bar = (LinearLayout) getActivity().findViewById(R.id.rmid_blue_bar);
-        history= (LinearLayout) getActivity().findViewById(R.id.tod_in_his);
-        rbot_blue_bar= (LinearLayout) getActivity().findViewById(R.id.rbot_blue_bar);
+        history = (LinearLayout) getActivity().findViewById(R.id.tod_in_his);
+        rbot_blue_bar = (LinearLayout) getActivity().findViewById(R.id.rbot_blue_bar);
         grocery = (LinearLayout) getActivity().findViewById(R.id.grocery_list);
-        left_sidebar = (LinearLayout) getActivity().findViewById(R.id.left_sidebar_linear_layout) ;
-        light_switch_sound = MediaPlayer.create(getActivity(), R.raw.swtch);
+        left_sidebar = (LinearLayout) getActivity().findViewById(R.id.left_sidebar_linear_layout);
+        todays_weather_ll = (LinearLayout) getActivity().findViewById(R.id.todays_weather_linear_layout);
+        todays_weather_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lat_long_dialog();
+            }
+        });
+
         //End Variable Declaration *
         Timer timer = new Timer();
         timer.schedule(new Update_UI(), 1000, 300000);
     }
 
     public static void onLocationChanged(Location location, Context ctx) {
-//        latitude = location.getLatitude();
-//        longitude = location.getLongitude();
-        //todo not working
-        latitude = 28.0771450;
-        longitude= -82.4221140;
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
 
         new Todays_Weather_Parser(latitude, longitude, ctx).execute();//Todays
         new Forecast_Weather_Parser(latitude, longitude, ctx).execute();//forecast
-        new Headlines_Parser().execute();//Headlines
     }
 
+    public static void location_change(Context ctx) {
+        new Todays_Weather_Parser(latitude, longitude, ctx).execute();//Todays
+        new Forecast_Weather_Parser(latitude, longitude, ctx).execute();//forecast
+    }
 
     private class Update_UI extends TimerTask {
 
@@ -322,18 +347,25 @@ public class Home extends Fragment{
         }
     }
 
+    public void lat_long_dialog() {
+        new Lat_Long_Dialog(ctx);
+    }
+
     public void distance_dialog() {
         new Distance_Dialog(ctx);
     }
 
     public static void update_calendars(Main ctx) {
-        ctx.count=0;
+        ctx.count = 0;
         Event_Lists.reset_Andrews_event_list();
         Event_Lists.reset_Kelseys_event_list();
         new Calendar_Call(ctx);
     }
-    public void lights_out(){
-        if(lights_status==1) {
+
+    public void lights_out() {
+        MediaPlayer light_switch_sound;
+        light_switch_sound = MediaPlayer.create(getActivity(), R.raw.swtch);
+        if (lights_status == 1) {
             topBar.setVisibility(View.INVISIBLE);
             blue_bar_top.setVisibility(View.INVISIBLE);
             middle.setVisibility(View.INVISIBLE);
@@ -346,9 +378,8 @@ public class Home extends Fragment{
             left_sidebar.setVisibility(View.INVISIBLE);
             light_switch_sound.start();
             lightswitch_iv.setImageResource(R.drawable.light_off);
-            lights_status=0;
-        }
-        else{
+            lights_status = 0;
+        } else {
             topBar.setVisibility(View.VISIBLE);
             blue_bar_top.setVisibility(View.VISIBLE);
             middle.setVisibility(View.VISIBLE);
@@ -356,12 +387,26 @@ public class Home extends Fragment{
             driving.setVisibility(View.VISIBLE);
             r_mid_blue_bar.setVisibility(View.VISIBLE);
             history.setVisibility(View.VISIBLE);
-            rbot_blue_bar.setVisibility(View.VISIBLE);
             grocery.setVisibility(View.VISIBLE);
             left_sidebar.setVisibility(View.VISIBLE);
             light_switch_sound.start();
             lightswitch_iv.setImageResource(R.drawable.light_on);
-            lights_status=1;
+            lights_status = 1;
+        }
+    }
+    public void led_on_off(){
+        MediaPlayer light_switch_sound;
+        light_switch_sound = MediaPlayer.create(getActivity(), R.raw.swtch);
+        if (lights_status2 == 1) {
+            new LED_Async().execute("1");
+            light_switch_sound.start();
+            lightswitch2_iv.setImageResource(R.drawable.light_off);
+            lights_status2 = 0;
+        } else {
+            new LED_Async().execute("0");
+            light_switch_sound.start();
+            lightswitch2_iv.setImageResource(R.drawable.light_on);
+            lights_status2 = 1;
         }
     }
 

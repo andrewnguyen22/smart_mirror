@@ -96,5 +96,8 @@ public class Tools {
         }
         return wordCount;
     }
+    public static String remove_special(String str){
+        return str.replaceAll("[^ -~]", "");
+    }
 }
 

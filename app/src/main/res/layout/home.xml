@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1"
+        android:layout_weight=".3"
         android:orientation="horizontal"
         android:clickable="true"
         android:id="@+id/blue_bar_top">
@@ -62,7 +62,7 @@
         android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.15"
+        android:layout_weight="1.25"
         android:orientation="horizontal"
         android:background="@drawable/ripple"
         android:id="@+id/top_bar">
@@ -76,7 +76,7 @@
             android:layout_marginRight="6dp"
             android:layout_marginTop="3dp"
             android:layout_weight="1"
-            android:background="#1Affffff"
+            android:background="#111111"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -108,21 +108,23 @@
                         android:id="@+id/weather_description"
                         android:layout_width="match_parent"
                         android:lines="1"
+                        android:fontFamily="sans-serif"
                         android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:textColor="@android:color/white"
-                        android:textSize="6sp" />
+                        android:textSize="7sp" />
 
                     <TextView
                         android:id="@+id/humidity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:lines="1"
+                        android:fontFamily="sans-serif "
                         android:ellipsize="end"
                         android:layout_below="@id/weather_description"
                         android:textColor="@android:color/white"
-                        android:textSize="6sp" />
+                        android:textSize="7sp" />
 
                     <TextView
                         android:id="@+id/high_low_temp"
@@ -130,9 +132,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/humidity"
                         android:lines="1"
+                        android:fontFamily="sans-serif "
                         android:ellipsize="end"
                         android:textColor="@android:color/white"
-                        android:textSize="6sp" />
+                        android:textSize="7sp" />
 
                 </RelativeLayout>
 
@@ -152,10 +155,11 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="6dp"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-smallcaps"
+                    style="bold"
+                    android:fontFamily="sans-serif"
                     android:gravity="center_vertical"
                     android:textColor="@android:color/white"
-                    android:textSize="8sp" />
+                    android:textSize="10sp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -164,6 +168,7 @@
                     android:layout_weight="4"
                     >
                     <TextView
+                        android:fontFamily="sans-serif "
                         android:id="@+id/todays_temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -179,9 +184,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-thin"
+                    android:fontFamily="sans-serif "
                     android:textColor="@android:color/white"
-                    android:textSize="8sp" />
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
@@ -195,8 +200,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
+            android:onClick="weather"
             android:layout_weight="1"
-            android:background="#1Affffff">
+            android:background="#111111">
             <!--Day 1-->
             <LinearLayout
                 android:id="@+id/icon_day1"
@@ -384,11 +390,12 @@
         <LinearLayout
             android:id="@+id/headlines"
             android:layout_width="0dp"
+            android:onClick="usa_today"
             android:layout_height="match_parent"
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
             android:layout_weight="1"
-            android:background="#1Affffff"
+            android:background="#111111"
             android:orientation="vertical">
 
             <LinearLayout
@@ -410,12 +417,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="-3dp"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:gravity="center"
                         android:text="Today's Headlines"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
+                        android:textSize="15dp"
+                         />
                 </LinearLayout>
 
 
@@ -426,12 +433,14 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="4"
+                android:background="#161616"
                 android:paddingLeft="18dp"
                 android:paddingRight="18dp">
 
                 <TextView
                     android:id="@+id/headline_1_tv"
                     android:layout_width="match_parent"
+                    android:fontFamily="sans-serif "
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
@@ -439,11 +448,12 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:textColor="@android:color/white"
-                    android:textSize="6dp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/headline_2_tv"
                     android:layout_width="match_parent"
+                    android:fontFamily="sans-serif "
                     android:layout_height="wrap_content"
                     android:layout_below="@id/headline_1_tv"
                     android:layout_centerHorizontal="true"
@@ -451,30 +461,32 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:textColor="@android:color/white"
-                    android:textSize="6dp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/headline_3_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif "
                     android:layout_below="@id/headline_2_tv"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="2dp"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:textColor="@android:color/white"
-                    android:textSize="6dp" />
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/headline_4_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif "
                     android:layout_below="@id/headline_3_tv"
                     android:layout_centerHorizontal="true"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:textColor="@android:color/white"
-                    android:textSize="6dp" />
+                    android:textSize="10dp" />
 
 
             </RelativeLayout>
@@ -486,10 +498,11 @@
         <LinearLayout
             android:id="@+id/time_and_date_linear_layout"
             android:layout_width="0dp"
+            android:onClick="time"
             android:layout_height="match_parent"
             android:layout_marginLeft="6dp"
             android:layout_weight="1"
-            android:background="#1Affffff"
+            android:background="#111111"
             android:orientation="vertical">
 
 
@@ -513,7 +526,7 @@
                     android:format12Hour="EEEE, MMMM dd yyyy"
                     android:gravity="end"
                     android:textColor="@android:color/white"
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:targetApi="jelly_bean_mr1" />
                 <!--Time-->
@@ -559,7 +572,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:onClick="google_calendar"
+                android:id="@+id/kelseys_schedule_ll">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -574,21 +589,25 @@
                         android:gravity="center"
                         android:text="Kelsey's Schedule"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp" />
+                        android:textSize="15dp"
+                        android:background="@drawable/bottom_border"/>
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
-                    android:background="#1Affffff">
+                    android:background="#111111"
+                    android:id="@+id/testingtesting">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
-                        android:layout_marginTop="3dp">
+                        android:layout_marginTop="3dp"
+                        android:background="#111111"
+                        android:id="@+id/testing">
 
                         <TextView
                             android:id="@+id/kelseys_1_task"
@@ -597,10 +616,10 @@
                             android:layout_alignParentTop="true"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_2_task"
@@ -609,10 +628,10 @@
                             android:layout_below="@id/kelseys_1_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_3_task"
@@ -621,10 +640,10 @@
                             android:layout_below="@id/kelseys_2_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_4_task"
@@ -633,10 +652,10 @@
                             android:layout_below="@id/kelseys_3_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_5_task"
@@ -645,10 +664,10 @@
                             android:layout_below="@id/kelseys_4_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_6_task"
@@ -657,10 +676,10 @@
                             android:layout_below="@id/kelseys_5_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_7_task"
@@ -669,10 +688,10 @@
                             android:layout_below="@id/kelseys_6_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_8_task"
@@ -681,10 +700,10 @@
                             android:layout_below="@id/kelseys_7_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/kelseys_9_task"
@@ -693,10 +712,10 @@
                             android:layout_below="@id/kelseys_8_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -713,7 +732,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:onClick="google_calendar"
+                android:id="@+id/andrews_schedule_ll">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -728,14 +749,14 @@
                         android:gravity="center"
                         android:text="Andrew's Schedule"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
-                    android:background="#1Affffff">
+                    android:background="#111111">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -751,10 +772,10 @@
                             android:layout_alignParentTop="true"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_2_task"
@@ -763,10 +784,10 @@
                             android:layout_below="@id/andrews_1_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_3_task"
@@ -775,10 +796,10 @@
                             android:layout_below="@id/andrews_2_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_4_task"
@@ -787,10 +808,10 @@
                             android:layout_below="@id/andrews_3_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_5_task"
@@ -799,10 +820,10 @@
                             android:layout_below="@id/andrews_4_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_6_task"
@@ -811,10 +832,10 @@
                             android:layout_below="@id/andrews_5_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_7_task"
@@ -823,10 +844,10 @@
                             android:layout_below="@id/andrews_6_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_8_task"
@@ -835,10 +856,10 @@
                             android:layout_below="@id/andrews_7_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/andrews_9_task"
@@ -847,10 +868,10 @@
                             android:layout_below="@id/andrews_8_task"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -867,9 +888,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.85"
-                android:background="#1Affffff"
-
-                android:orientation="vertical">
+                android:background="#111111"
+                android:onClick="twitter_trending"
+                android:orientation="vertical"
+                android:id="@+id/trending_ll">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -885,7 +907,7 @@
                         android:gravity="center"
                         android:text="Trending Topics"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <RelativeLayout
@@ -904,10 +926,10 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="2dp"
                         android:ellipsize="end"
-                        android:fontFamily="sans-serif-condensed"
+                        android:fontFamily="sans-serif "
                         android:lines="1"
                         android:textColor="@android:color/white"
-                        android:textSize="6dp" />
+                        android:textSize="11dp" />
 
                     <TextView
                         android:id="@+id/tweet_2"
@@ -916,10 +938,10 @@
                         android:layout_below="@id/tweet_1"
                         android:ellipsize="end"
                         android:layout_marginBottom="2dp"
-                        android:fontFamily="sans-serif-condensed"
+                        android:fontFamily="sans-serif "
                         android:lines="1"
                         android:textColor="@android:color/white"
-                        android:textSize="6dp" />
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/tweet_3"
@@ -928,10 +950,10 @@
                         android:layout_below="@id/tweet_2"
                         android:layout_marginBottom="2dp"
                         android:ellipsize="end"
-                        android:fontFamily="sans-serif-condensed"
+                        android:fontFamily="sans-serif "
                         android:lines="1"
                         android:textColor="@android:color/white"
-                        android:textSize="6dp" />
+                        android:textSize="11dp" />
                     <TextView
                         android:id="@+id/tweet_4"
                         android:layout_width="wrap_content"
@@ -939,10 +961,10 @@
                         android:layout_below="@id/tweet_3"
                         android:layout_marginBottom="2dp"
                         android:ellipsize="end"
-                        android:fontFamily="sans-serif-condensed"
+                        android:fontFamily="sans-serif "
                         android:lines="1"
                         android:textColor="@android:color/white"
-                        android:textSize="6dp" />
+                        android:textSize="11dp"/>
                     <TextView
                         android:id="@+id/tweet_5"
                         android:layout_width="wrap_content"
@@ -950,21 +972,10 @@
                         android:layout_below="@id/tweet_4"
                         android:layout_marginBottom="2dp"
                         android:ellipsize="end"
-                        android:fontFamily="sans-serif-condensed"
+                        android:fontFamily="sans-serif "
                         android:lines="1"
                         android:textColor="@android:color/white"
-                        android:textSize="6dp" />
-                    <TextView
-                        android:id="@+id/tweet_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tweet_5"
-                        android:layout_marginBottom="2dp"
-                        android:ellipsize="end"
-                        android:fontFamily="sans-serif-condensed"
-                        android:lines="1"
-                        android:textColor="@android:color/white"
-                        android:textSize="6dp" />
+                        android:textSize="11dp" />
 
                 </RelativeLayout>
 
@@ -1043,14 +1054,14 @@
                         android:gravity="center"
                         android:text="Driving Today"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
-                    android:background="#1Affffff">
+                    android:background="#111111">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -1066,10 +1077,10 @@
                             android:layout_alignParentTop="true"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/driving_to_location_2"
@@ -1078,10 +1089,10 @@
                             android:layout_below="@id/driving_to_location_1"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif "
                             android:lines="1"
                             android:textColor="@android:color/white"
-                            android:textSize="8dp" />
+                            android:textSize="10dp" />
 
 
                     </RelativeLayout>
@@ -1102,6 +1113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".75"
+                android:onClick="today_in_his"
                 android:orientation="vertical"
                 android:id="@+id/tod_in_his">
 
@@ -1117,15 +1129,16 @@
                         android:fontFamily="sans-serif-smallcaps"
                         android:gravity="center"
                         android:text="Today in history"
+                        android:ellipsize="end"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
-                    android:background="#1Affffff">
+                    android:background="#111111">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -1141,10 +1154,10 @@
                             android:layout_alignParentTop="true"
                             android:layout_marginBottom="2dp"
                             android:ellipsize="end"
-                            android:fontFamily="sans-serif-condensed"
-                            android:lines="3"
+                            android:lines="2"
+                            android:fontFamily="sans-serif "
                             android:textColor="@android:color/white"
-                            android:textSize="6sp" />
+                            android:textSize="10dp" />
 
 
                     </RelativeLayout>
@@ -1168,7 +1181,16 @@
                     <ImageView
                         android:id="@+id/lightswitch_iv"
                         android:onClick="lights_out"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:soundEffectsEnabled="false"
+                        android:src="@drawable/light_on" />
+                    <ImageView
+                        android:id="@+id/lightswitch2_iv"
+                        android:onClick="led_on_off"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:soundEffectsEnabled="false"
                         android:src="@drawable/light_on" />
@@ -1206,14 +1228,14 @@
                         android:gravity="center"
                         android:text="Grocery List"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
-                    android:background="#1Affffff">
+                    android:background="#111111">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1237,10 +1259,10 @@
                                 android:layout_marginBottom="1dp"
                                 android:layout_marginTop="6dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_2"
@@ -1250,10 +1272,10 @@
                                 android:layout_below="@id/shopping_item_1"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_3"
@@ -1263,10 +1285,10 @@
                                 android:layout_below="@id/shopping_item_2"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_4"
@@ -1276,10 +1298,10 @@
                                 android:layout_below="@id/shopping_item_3"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_5"
@@ -1289,10 +1311,10 @@
                                 android:layout_below="@id/shopping_item_4"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_6"
@@ -1302,10 +1324,10 @@
                                 android:layout_below="@id/shopping_item_5"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_7"
@@ -1315,10 +1337,10 @@
                                 android:layout_below="@id/shopping_item_6"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_8"
@@ -1328,10 +1350,10 @@
                                 android:layout_below="@id/shopping_item_7"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_9"
@@ -1341,10 +1363,10 @@
                                 android:layout_below="@id/shopping_item_8"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_10"
@@ -1354,10 +1376,10 @@
                                 android:layout_below="@id/shopping_item_9"
                                 android:layout_marginBottom="2dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_11"
@@ -1367,10 +1389,10 @@
                                 android:layout_below="@id/shopping_item_10"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_12"
@@ -1382,7 +1404,7 @@
                                 android:fontFamily="sans-serif-condensed"
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -1399,10 +1421,10 @@
                                 android:layout_marginBottom="1dp"
                                 android:layout_marginTop="6dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_14"
@@ -1412,10 +1434,10 @@
                                 android:layout_below="@id/shopping_item_13"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_15"
@@ -1425,10 +1447,10 @@
                                 android:layout_below="@id/shopping_item_14"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_16"
@@ -1438,10 +1460,10 @@
                                 android:layout_below="@id/shopping_item_15"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_17"
@@ -1451,10 +1473,10 @@
                                 android:layout_below="@id/shopping_item_16"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_18"
@@ -1464,10 +1486,10 @@
                                 android:layout_below="@id/shopping_item_17"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_19"
@@ -1477,10 +1499,10 @@
                                 android:layout_below="@id/shopping_item_18"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_20"
@@ -1490,10 +1512,10 @@
                                 android:layout_below="@id/shopping_item_19"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_21"
@@ -1503,10 +1525,10 @@
                                 android:layout_below="@id/shopping_item_20"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_22"
@@ -1516,10 +1538,10 @@
                                 android:layout_below="@id/shopping_item_21"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_23"
@@ -1529,10 +1551,10 @@
                                 android:layout_below="@id/shopping_item_22"
                                 android:layout_marginBottom="1dp"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                             <TextView
                                 android:id="@+id/shopping_item_24"
@@ -1541,10 +1563,10 @@
                                 android:layout_alignParentLeft="true"
                                 android:layout_below="@id/shopping_item_23"
                                 android:ellipsize="end"
-                                android:fontFamily="sans-serif-condensed"
+                                android:fontFamily="sans-serif "
                                 android:lines="1"
                                 android:textColor="@android:color/white"
-                                android:textSize="8dp" />
+                                android:textSize="10dp" />
 
                         </RelativeLayout>
                     </LinearLayout>

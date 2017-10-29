@@ -71,7 +71,7 @@ public class Get_Trends extends AsyncTask<Void, Void, Void>{
             JSONArray reader = new JSONArray(response.toString());
             JSONObject reader_ = reader.getJSONObject(0);
             JSONArray trends = reader_.getJSONArray("trends");
-            for(int i = 0; i<6; i++){
+            for(int i = 0; i<5; i++){
                 JSONObject tweet = trends.getJSONObject(i);
                 tweet_name_list.add(tweet.getString("name"));
                 tweet_volume_list.add(tweet.getString("tweet_volume"));
@@ -82,11 +82,10 @@ public class Get_Trends extends AsyncTask<Void, Void, Void>{
             tv_list.add(Home.tweet3_tv);
             tv_list.add(Home.tweet4_tv);
             tv_list.add(Home.tweet5_tv);
-            tv_list.add(Home.tweet6_tv);
             uiHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    for(int i = 0; i<6; i++) {
+                    for(int i = 0; i<5; i++) {
                         if (tweet_volume_list.get(i).equals("null")) {
                             tv_list.get(i).setText(tweet_name_list.get(i));
                         } else {

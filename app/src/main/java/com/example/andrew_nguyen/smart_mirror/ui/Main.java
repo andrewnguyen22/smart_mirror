@@ -67,6 +67,27 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
         adapter.addFragment(Apps.newInstance("Apps"), "Fragment Created");
         viewPager.setAdapter(adapter);
     }
+    public void google_calendar(View view) {
+        Apps.openApp(ctx, "com.google.android.calendar");
+    }
+
+    public void weather(View view) {
+        Apps.openApp(ctx, "com.weather.Weather");
+    }
+
+    public void today_in_his(View view) {
+        Apps.openApp(ctx, "com.alexandrucene.dayhistory");
+    }
+
+    public void usa_today(View view) {
+        Apps.openApp(ctx, "com.usatoday.android.news");
+    }
+
+    public void time(View view) {
+        Apps.openApp(ctx, "com.chineseinspiration");
+    }
+
+    public void twitter_trending(View view) {Apps.openApp(ctx, "com.twitter.android");}
 
     public void spotify(View view) {
         Apps.openApp(ctx, "com.spotify.music");
@@ -89,7 +110,7 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
     }
 
     public void facebook(View view) {
-        Apps.openApp(ctx, "com.facebook.katana");
+        Apps.openApp(ctx, "com.facebook.lite");
     }
 
     public void twitter(View view) {
@@ -99,6 +120,9 @@ public class Main extends AppCompatActivity implements LocationListener, EasyPer
     public void timer(View view) {
         Apps.openApp(ctx, "com.sportstracklive.stopwatch");
     }
+
+    public void news(View view){Apps.openApp(ctx, "com.usatoday.android.news");}//TODO open news app on headlines click
+    //TODO open twitter to headlines
 
     @Override
     public void onLocationChanged(Location location) {

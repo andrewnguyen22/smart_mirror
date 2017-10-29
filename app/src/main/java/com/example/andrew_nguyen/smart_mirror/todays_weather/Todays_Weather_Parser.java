@@ -1,9 +1,12 @@
 package com.example.andrew_nguyen.smart_mirror.todays_weather;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.andrew_nguyen.smart_mirror.ui.Home;
@@ -16,6 +19,8 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -84,7 +89,10 @@ public class Todays_Weather_Parser extends AsyncTask<Void, Void, Void> {
                     Home.todays_high_low_tv.setText("High: " + todays_high + "  |  Low: " + todays_low);
                     Home.todays_location_tv.setText(todays_location);
                     Home.todays_temperature_tv.setText(todays_temperature);
-                    Home.todays_location_tv.setText(cityname);
+                    new Reverse_Geocode_Parser().execute().get();
+                    if(TextUtils.isEmpty(Home.todays_location_tv.getText()))
+                        Home.todays_location_tv.setText(cityname);
+
                     //TODO Get City and state and '.setText(cityname, statename);'
                     //Sunrise and Sunset
                     long unixTime = System.currentTimeMillis() / 1000L;
